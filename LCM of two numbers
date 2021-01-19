@@ -1,0 +1,30 @@
+#include <stdio.h>
+// function declaration
+int lcm_of_nums(int, int);
+ 
+int main()
+{
+    int a, b,lcm;
+    int prime[10000];
+ 
+    printf("Input frist number:");
+    scanf("%d",&a);
+    printf("Input second number:");
+    scanf("%d",&b);
+    lcm= lcm_of_nums(a, b);         // function call 
+    printf("LCM of %d and %d = %d\n", a, b, lcm);
+    return 0;
+}
+// function defination
+int lcm_of_nums(int a, int b)
+{ 
+    static int common= 1;
+ 
+    if (common % a == 0 && common % b == 0)
+    {
+        return common;
+    }
+    common++;
+    lcm_of_nums(a, b);  // function call within the function
+    return common;
+}
